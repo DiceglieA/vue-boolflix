@@ -5,7 +5,13 @@
     </div>
     <div class="selection">
       <label for="text">
-        <input id="search" type="search" placeholder="digita qui">
+        <input
+          id="search"
+          v-model="searchTitle"
+          type="search"
+          placeholder="digita qui"
+          @keyup="$emit('search', searchTitle)"
+        >
         <button>Invia</button>
       </label>
     </div>
@@ -15,6 +21,11 @@
 <script>
 export default {
   name: 'HeaderComp',
+  data() {
+    return {
+      serarchTitle: '',
+    };
+  },
 };
 </script>
 
