@@ -5,16 +5,23 @@
       :key="movie.id"
       :movie="movie"
     />
+    <SerieCard
+      v-for="serie in series"
+      :key="serie.id"
+      :serie="serie"
+    />
   </div>
 </template>
 
 <script>
 import MovieCard from '@/components/MovieCard.vue';
+import SerieCard from '@/components/SerieCard.vue';
 
 export default {
   name: 'MainComp',
   components: {
     MovieCard,
+    SerieCard,
   },
   props: {
     movies: Array,
