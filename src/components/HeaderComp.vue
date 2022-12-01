@@ -4,16 +4,18 @@
       <a href="!#">BOOLFLIX</a>
     </div>
     <div class="selection">
-      <label for="text">
-        <input
-          id="search"
-          v-model="searchTitle"
-          type="search"
-          placeholder="digita qui"
-          @keyup="$emit('search', searchTitle)"
-        >
-        <button>Invia</button>
-      </label>
+      <form @submit.prevent="$emit('search', searchTitle)">
+        <label for="search">
+          <input
+            id="search"
+            v-model="searchTitle"
+            type="text"
+            name="search"
+            placeholder="digita qui"
+          >
+          <button>Invia</button>
+        </label>
+      </form>
     </div>
   </header>
 </template>
@@ -23,7 +25,7 @@ export default {
   name: 'HeaderComp',
   data() {
     return {
-      serarchTitle: '',
+      searchTitle: '',
     };
   },
 };

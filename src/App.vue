@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeaderComp @search="searching" />
-    <MainComp />
+    <MainComp :movies="movies" />
   </div>
 </template>
 
@@ -18,16 +18,25 @@ export default {
   },
   data() {
     return {
-      baseApi: 'https://api.themoviedb.org/3',
+      movieApi: 'https://api.themoviedb.org/3/search/movie',
       apiKey: '61be2a28a2d6dd1d08a2030ee591fb8c',
-      searchTitle: '',
+      resultLanguage: 'it-IT',
+      movies: [],
     };
   },
   methods: {
     searching(searchTitle) {
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${this.apiKey}&query=${searchTitle}`)
-        .then((response) => {
-          console.log(response.data.result);
+      this.title = searchTitle;
+      axios.get(this.movieApi, {
+        params: {
+          api_key: this.apiKey,
+          language: this.resultLanguage,
+          query: this.title,
+        },
+      })
+        .then((responseAxios) => {
+          this.movies = responseAxios.data.results;
+          console.log(this.movies);
         });
     },
   },

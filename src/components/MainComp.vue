@@ -1,10 +1,25 @@
 <template>
-  <div class="container" />
+  <div class="container">
+    <MovieCard
+      v-for="movie in movies"
+      :key="movie.id"
+      :movie="movie"
+    />
+  </div>
 </template>
 
 <script>
+import MovieCard from '@/components/MovieCard.vue';
+
 export default {
   name: 'MainComp',
+  components: {
+    MovieCard,
+  },
+  props: {
+    movies: Array,
+    series: Array,
+  },
 };
 </script>
 
