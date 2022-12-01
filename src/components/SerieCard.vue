@@ -1,17 +1,22 @@
 <template>
   <div>
-    <ul>
-      <li>{{ serie.title }}</li>
-      <li>{{ serie.original_title }}</li>
-      <li>{{ serie.original_language }}</li>
-      <li>{{ serie.vote_average }}</li>
-    </ul>
+    <div>
+      <div>{{ serie.title }}</div>
+      <div>{{ serie.original_title }}</div>
+      <lang-flag :iso="movie.original_language" />
+      <div>{{ serie.vote_average }}</div>
+    </div>
   </div>
 </template>
 
 <script>
+import LangFlag from 'vue-lang-code-flags';
+
 export default {
   name: 'SerieCard',
+  components: {
+    LangFlag,
+  },
   props: {
     serie: Object,
   },
